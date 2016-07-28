@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+  <title>Races</title>
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="Routespotter.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="Routespotter.js"></script>
+
+</head>
+
+<body>
+   <div class='nav' id='navItems' onclick='navClick()'>&#9776;</div>
+    <form action="racePick" name="racePick">
+      <ul class = "selections"> 
+        <li onclick="raceChange('dwarf');">Dwarf</li>
+        <li onclick="raceChange('elf');">Elf</li>
+        <li onclick="raceChange('gnome');">Gnome</li>
+        <li onclick="raceChange('halfElf');">Half-Elf</li>
+        <li onclick="raceChange('halfOrc');">Half-Orc</li>
+        <li onclick="raceChange('halfling');">Halfling</li>
+        <li onclick="raceChange('human');">Human</li>
+      </ul>
+    </form>
+    <div class='raceContainter' id='raceContainer'><h1><a onClick="raceChange();" id="Dwarf" onclick="acceptCurrent(this.id);">Dwarf</a></h1></div>
+    <div class='raceImage' id='raceImage'><div class="raceimage"><img src="http://imgur.com/gYya0re.jpg" alt="Dwarf" class="dwarf-race"></div></div>
+    <div class='raceDescription' id='raceDescription'><section class="description"><p>Dwarves are a stoic but stern race, ensconced in cities carved from the hearts of mountains and fiercely determined to repel the depredations of savage races like orcs and goblins. More than any other race, the dwarves have acquired a reputation as dour and humorless craftsmen of the earth. It could be said that dwarven history shapes the dark disposition of many dwarves, for they reside in high mountains and dangerous realms below the earth, constantly at war with giants, goblins, and other such horrors. </p><br/><p><strong>Physical Description:</strong> Dwarves are a short and stocky race, and stand about a foot shorter than most humans, with wide, compact bodies that account for their burly appearance. Male and female dwarves pride themselves on the length of their hair, and men often decorate their beards with a variety of clasps and intricate braids. A clean-shaven male dwarf is a sure sign of madness, or worse—no one familiar with their race trusts a beardless dwarf.</p><br/><p><strong>Society:</strong> The great distances between their mountain citadels account for many of the cultural differences that exist within dwarven society. Despite these schisms, dwarves throughout the world are characterized by their love of stonework, their passion for stone- and metal-based craftsmanship and architecture, and a fierce hatred of giants, orcs, and goblinoids.</p><br/><p><strong>Relations:</strong> Dwarves and orcs have long dwelt in proximity, theirs a history of violence as old as both their races. Dwarves generally distrust and shun half-orcs. They find halflings, elves, and gnomes to be too frail, flighty, or “pretty” to be worthy of proper respect. It is with humans that dwarves share the strongest link, for humans industrious nature and hearty appetites come closest to matching those of the dwarven ideal. </p><br/><p><strong>Alignment and Religion:</strong>  Dwarves are driven by honor and tradition, and while they are often satirized as standoffish, they have a strong sense of friendship and justice, and those who win their trust understand that, while they work hard, they play even harder—especially when good ale is involved. Most dwarves are lawful good.</p><br/><p><strong>Adventurers:</strong> Although dwarven adventurers are rare compared to humans, they can be found in most regions of the world. Dwarves often leave the confines of their redoubts to seek glory for their clans, to find wealth with which to enrich the fortress-homes of their birth, or to reclaim fallen dwarven citadels from racial enemies. Dwarven warfare is often characterized by tunnel fighting and melee combat, and as such most dwarves tend toward classes such as fighters and barbarians. </p></section><section class="racial-traits"><br/><p>+2 Dexterity, +2 Intelligence, –2 Constitution: Elves are nimble, both in body and mind, but their form is frail.</p><br/><p>Medium: Elves are Medium creatures and have no bonuses or penalties due to their size.</p><br/><p>Normal Speed: Elves have a base speed of 30 feet.</p><br/><p>Low-Light Vision: Elves can see twice as far as humans in conditions of dim light. See Additional Rules.</p><br/><p>Elven Immunities: Elves are immune to magic sleep effects and get a +2 racial saving throw bonus against enchantment spells and effects.</p><br/><p>Elven Magic: Elves receive a +2 racial bonus on caster level checks made to overcome spell resistance. In addition, elves receive a +2 racial bonus on Spellcraft skill checks made to identify the properties of magic items.</p><br/><p>Keen Senses: Elves receive a +2 racial bonus on Perception skill checks.</p><br/><p>Weapon Familiarity: Elves are proficient with longbows (including composite longbows), longswords, rapiers, and shortbows (including composite shortbows), and treat any weapon with the word “elven” in its name as a martial weapon.</p><br/><p>Languages: Elves begin play speaking Common and Elven. Elves with high Intelligence scores can choose from the following: Celestial, Draconic, Gnoll, Gnome, Goblin, Orc, and Sylvan.</p><br/></section>
+ </div>
+
+  <div class='chooseRace' id='chooseRace' style="text-align:center;">
+    <button id="Dwarf" onclick="acceptCurrent(this.id)">Choose This Race</button>
+  </div>
+  </br>
+  <div style="text-align:center;">
+    <button onclick="window.location.href='classes.html'">Continue</button>
+  </div>
+
+</body>

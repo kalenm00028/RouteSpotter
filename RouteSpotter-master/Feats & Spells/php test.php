@@ -1,0 +1,26 @@
+<head>
+  <title>Dice Roller</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="Routespotter.css">
+  <script type="text/javascript" src="RouteSpotter.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<p>PHP Connecting:</p>
+	<?php echo "hello"; ?>
+	<?php
+		$db = mysql_connect('localhost','routspottermain','routspottermain','routespotter');
+	?>
+	<?php
+	    $query = "SELECT * FROM `feats`;";
+	    $result = mysqli_query($db, $query);
+	    while($row = mysqli_fetch_assoc($result)) {
+	          // Display your datas on the page
+	    }
+	?>
+
+</body>

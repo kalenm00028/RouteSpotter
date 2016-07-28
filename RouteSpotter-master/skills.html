@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<head>
+  <title>Skills</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="Routespotter.css">
+  <script type="text/javascript" src="Routespotter.js"></script>
+  <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body onload="setMods()">
+  <BR>
+  <div class='nav' id='navItems' onclick='navClick()'>&#9776;</div>
+  <BR>
+  <div style="text-align:center;">
+    <h1>Available Skill Points:</h1>
+    <h1 id="numberOfSkillPoints"></h1>
+    <h3>(Ranks per level: <span id="ranksPerLevel"></span> + int modifier)</h3>
+  </div>
+  <table class="skillTable" style="text-align:center;">
+    <tr>
+      <td>Trained:</td>
+      <td>Skill:</td>
+      <td>Ranks:</td>
+      <td></td>
+      <td></td>
+      <td>Misc. Bonuses:</td>
+      <td>Key Ability:</td>
+      <td>Total Modifier:</td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill01Box" disabled readonly></td>
+      <td id="skill01Name">Acrobatics</td>
+      <td><input type="text" name="skill01" id="skill01" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill01" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill01" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill01Bonus">0</span></td>
+      <td id="skill01Ability">Dex: <span class="dexMod">0</span></td>
+      <td><span id="skill01Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill02Box" disabled readonly></td>
+      <td id="skill02Name">Appraise</td>
+      <td><input type="text" name="skill02" id="skill02" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill02" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill02" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill02Bonus">0</span></td>
+      <td id="skill02Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill02Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill03Box" disabled readonly></td>
+      <td id="skill03Name">Bluff</td>
+      <td><input type="text" name="skill03" id="skill03" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill03" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill03" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill03Bonus">0</span></td>
+      <td id="skill03Ability">Cha: <span class="chaMod">0</span></td>
+      <td><span id="skill03Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill04Box" disabled readonly></td>
+      <td id="skill04Name">Climb</td>
+      <td><input type="text" name="skill04" id="skill04" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill04" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill04" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill04Bonus">0</span></td>
+      <td id="skill04Ability">Str: <span class="strMod">0</span></td>
+      <td><span id="skill04Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill05Box" disabled readonly></td>
+      <td id="skill05Name">Craft</td>
+      <td><input type="text" name="skill05" id="skill05" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill05" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill05" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill05Bonus">0</span></td>
+      <td id="skill05Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill05Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill06Box" disabled readonly></td>
+      <td id="skill06Name">Diplomacy</td>
+      <td><input type="text" name="skill06" id="skill06" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill06" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill06" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill06Bonus">0</span></td>
+      <td id="skill06Ability">Cha: <span class="chaMod">0</span></td>
+      <td><span id="skill06Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill07Box" disabled readonly></td>
+      <td id="skill07Name">Disable Device</td>
+      <td><input type="text" name="skill07" id="skill07" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill07" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill07" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill07Bonus">0</span></td>
+      <td id="skill07Ability">Dex: <span class="dexMod">0</span></td>
+      <td><span id="skill07Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill08Box" disabled readonly></td>
+      <td id="skill08Name">Disguise</td>
+      <td><input type="text" name="skill08" id="skill08" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill08" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill08" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill08Bonus">0</span></td>
+      <td id="skill08Ability">Cha: <span class="chaMod">0</span></td>
+      <td><span id="skill08Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill09Box" disabled readonly></td>
+      <td id="skill09Name">Escape Artist</td>
+      <td><input type="text" name="skill09" id="skill09" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill09" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill09" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill09Bonus">0</span></td>
+      <td id="skill09Ability">Dex: <span class="dexMod">0</span></td>
+      <td><span id="skill09Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill10Box" disabled readonly></td>
+      <td id="skill10Name">Fly</td>
+      <td><input type="text" name="skill10" id="skill10" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill10" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill10" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill10Bonus">0</span></td>
+      <td id="skill10Ability">Dex: <span class="dexMod">0</span></td>
+      <td><span id="skill10Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill11Box" disabled readonly></td>
+      <td id="skill11Name">Handle Animal</td>
+      <td><input type="text" name="skill11" id="skill11" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill11" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill11" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill11Bonus">0</span></td>
+      <td id="skill11Ability">Cha: <span class="chaMod">0</span></td>
+      <td><span id="skill11Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill12Box" disabled readonly></td>
+      <td id="skill12Name">Heal</td>
+      <td> <input type="text" name="skill12" id="skill12" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill12" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill12" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill12Bonus">0</span></td>
+      <td id="skill12Ability">Wis: <span class="wisMod">0</span></td>
+      <td><span id="skill12Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill13Box" disabled readonly></td>
+      <td id="skill13Name">Intimidate</td>
+      <td><input type="text" name="skill13" id="skill13" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill13" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill13" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill13Bonus">0</span></td>
+      <td id="skill13Ability">Cha: <span class="chaMod">0</span></td>
+      <td><span id="skill13Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill14Box" disabled readonly></td>
+      <td id="skill14Name">Knowledge(Arcana)</td>
+      <td><input type="text" name="skill14" id="skill14" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill14" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill14" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill14Bonus">0</span></td>
+      <td id="skill14Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill14Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill15Box" disabled readonly></td>
+      <td id="skill15Name">Knowledge(Dugeoneering)</td>
+      <td><input type="text" name="skill15" id="skill15" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill15" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill15" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill15Bonus">0</span></td>
+      <td id="skill15Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill15Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill16Box" disabled readonly></td>
+      <td id="skill16Name">Knowledge(Engineering</td>
+      <td><input type="text" name="skill16" id="skill16" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill16" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill16" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill16Bonus">0</span></td>
+      <td id="skill16Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill16Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill17Box" disabled readonly></td>
+      <td id="skill17Name">Knowledge(Geography)</td>
+      <td><input type="text" name="skill14" id="skill17" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill17" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill17" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill17Bonus">0</span></td>
+      <td id="skill17Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill17Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill18Box" disabled readonly></td>
+      <td id="skill18Name">Knowledge(History)</td>
+      <td><input type="text" name="skill18" id="skill18" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill18" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill18" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill18Bonus">0</span></td>
+      <td id="skill18Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill18Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill19Box" disabled readonly></td>
+      <td id="skill19Name">Knowledge(Local)</td>
+      <td><input type="text" name="skill19" id="skill19" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill19" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill19" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill19Bonus">0</span></td>
+      <td id="skill19Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill19Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill20Box" disabled readonly></td>
+      <td id="skill20Name">Knowledge(Nature)</td>
+      <td><input type="text" name="skill20" id="skill20" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill20" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill20" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill20Bonus">0</span></td>
+      <td id="skill20Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill20Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill21Box" disabled readonly></td>
+      <td id="skill21Name">Knowledge(Nobility)</td>
+      <td><input type="text" name="skill21" id="skill21" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill21" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill21" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill21Bonus">0</span></td>
+      <td id="skill21Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill21Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill22Box" disabled readonly></td>
+      <td id="skill22Name">Knowledge(Planes)</td>
+      <td><input type="text" name="skill22" id="skill22" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill22" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill22" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill22Bonus">0</span></td>
+      <td id="skill22Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill22Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill23Box" disabled readonly></td>
+      <td id="skill23Name">Knowledge(Religion)</td>
+      <td><input type="text" name="skill23" id="skill23" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill23" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill23" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill23Bonus">0</span></td>
+      <td id="skill23Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill23Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill24Box" disabled readonly></td>
+      <td id="skill24Name">Linguistics</td>
+      <td><input type="text" name="skill24" id="skill24" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill24" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill24" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill24Bonus">0</span></td>
+      <td id="skill24Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill24Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill25Box" disabled readonly></td>
+      <td id="skill25Name">Perception</td>
+      <td> <input type="text" name="skill25" id="skill25" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill25" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill25" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill25Bonus">0</span></td>
+      <td id="skill25Ability">Wis: <span class="wisMod">0</span></td>
+      <td><span id="skill25Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill26Box" disabled readonly></td>
+      <td id="skill26Name">Perform</td>
+      <td><input type="text" name="skill26" id="skill26" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill26" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill26" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill26Bonus">0</span></td>
+      <td id="skill26Ability">Cha: <span class="chaMod">0</span></td>
+      <td><span id="skill26Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill27Box" disabled readonly></td>
+      <td id="skill27Name">Profession</td>
+      <td><input type="text" name="skill27" id="skill27" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill27" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill27" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill27Bonus">0</span></td>
+      <td id="skill27Ability">Wis: <span class="wisMod">0</span></td>
+      <td><span id="skill27Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill28Box" disabled readonly></td>
+      <td id="skill28Name">Ride</td>
+      <td> <input type="text" name="skill28" id="skill28" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill28" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill28" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill28Bonus">0</span></td>
+      <td id="skill28Ability">Dex: <span class="dexMod">0</span></td>
+      <td><span id="skill28Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill29Box" disabled readonly></td>
+      <td id="skill29Name">Sense Motive</td>
+      <td><input type="text" name="skill29" id="skill29" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill29" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill29" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill29Bonus">0</span></td>
+      <td id="skill29Ability">Wis: <span class="wisMod">0</span></td>
+      <td><span id="skill29Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill30Box" disabled readonly></td>
+      <td id="skill30Name">Sleight of Hand</td>
+      <td><input type="text" name="skill30" id="skill30" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill30" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill30" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill30Bonus">0</span></td>
+      <td id="skill30Ability">Dex: <span class="dexMod">0</span></td>
+      <td><span id="skill30Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill31Box" disabled readonly></td>
+      <td id="skill31Name">Spellcraft</td>
+      <td><input type="text" name="skill31" id="skill31" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill31" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill31" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill31Bonus">0</span></td>
+      <td id="skill31Ability">Int: <span class="intMod">0</span></td>
+      <td><span id="skill31Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill32Box" disabled readonly></td>
+      <td id="skill32Name">Stealth</td>
+      <td><input type="text" name="skill32" id="skill32" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill32" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill32" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill32Bonus">0</span></td>
+      <td id="skill32Ability">Dex: <span class="dexMod">0</span></td>
+      <td><span id="skill32Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill33Box" disabled readonly></td>
+      <td id="skill33Name">Survival</td>
+      <td><input type="text" name="skill33" id="skill33" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill33" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill33" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill33Bonus">0</span></td>
+      <td id="skill33Ability">Wis: <span class="wisMod">0</span></td>
+      <td><span id="skill33Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill34Box" disabled readonly></td>
+      <td id="skill34Name">Swim</td>
+      <td><input type="text" name="skill34" id="skill34" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill34" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill34"  value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill34Bonus">0</span></td>
+      <td id="skill34Ability">Str: <span class="strMod">0</span></td>
+      <td><span id="skill34Mod">0</span><td>
+    </tr>
+    <tr>
+      <td><input type='checkbox' id="skill35Box" disabled readonly></td>
+      <td id="skill35Name">Use Magic Device</td>
+      <td><input type="text" name="skill35" id="skill35" value="0" size="3" maxlength="5" readonly/></td>
+      <td><button id="skill35" value="0" onclick="skillDown(event)">-</button></td>
+      <td><button id="skill35" value="0" onclick="skillUp(event)">+</button></td>
+      <td><span id="skill35Bonus">0</span></td>
+      <td id="skill35Ability">Cha: <span class="chaMod">0</span></td>
+      <td><span id="skill35Mod">0</span><td>
+    </tr>
+  </table>
+
+  <div style="text-align: center;">
+      <input type="button" value="Accept these skills" onclick="saveSkillCookies()">
+  </div>
+  <br>
+  <div style="text-align:center;">
+      <input type="button" value="Continue" onclick="window.location.href='feats.html'">
+  </div>
+
+</body>

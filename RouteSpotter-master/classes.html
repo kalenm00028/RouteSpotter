@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+  <title>Classes</title>
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="Routespotter.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="Routespotter.js"></script>
+
+</head>
+
+<body>
+   <div class='nav' id='navItems' onclick='navClick()'>&#9776;</div>
+    <form action="classPick" name="classPick">
+      <ul class = "selections"> 
+            <li onclick="classChange('barbarian');">Barbarian</li>
+            <li onclick="classChange('bard');">Bard</li>
+            <li onclick="classChange('cleric');">Cleric</li>
+            <li onclick="classChange('druid');">Druid</li>
+            <li onclick="classChange('fighter');">Fighter</li>
+            <li onclick="classChange('monk');">Monk</li>
+            <li onclick="classChange('paladin');">Paladin</li>
+            <li onclick="classChange('ranger');">Ranger</li>
+            <li onclick="classChange('rogue');">Rogue</li>
+            <li onclick="classChange('sorcerer');">Sorcerer</li>
+            <li onclick="classChange('wizard');">Wizard</li>
+      </ul>
+    </form>
+    <div class='classContainter' id='classContainer'><h1><a id="Barbarian" onclick="acceptCurrent(this.id);">Barbarian</a></h1></div>
+    <div class='classImage' id='classImage'><div class="classimage"><img src="http://pathfinderwiki.com/mediawiki/images/thumb/0/0b/Amiri.jpg/250px-Amiri.jpg" alt="Barbarian" class="barbarianClass"></div></div>
+    <div class='classDescription' id='classDescription'><section class="description"><p>Barbarians use an inborn rage to gain power over their foes. Brutally strong, tough, and resourceful, a barbarian is to be feared in individual combat, even by the most highly trained of warriors.</p></section></div>
+    <div class='chooseClass' id='chooseClass' style="text-align:center;">
+      <button id="barbarian" onclick="acceptCurrent(this.id)">Choose This Class</button>
+    </div>
+    </br>
+    <div style="text-align:center;">
+      <button onclick="window.location.href='abilityScores.html'">Continue</button>
+    </div>
+
+</body>
+
+
+
+
+
+
+
+
